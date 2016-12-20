@@ -222,7 +222,7 @@ private[freasymonad] abstract class FreeImpl(val c: blackbox.Context) {
               ..$injectClass
               trait Interp[M[_]] {
                 import ops._
-                val interpreter = new (${sealedTrait.name} ~> M) {
+                def interpreter = new (${sealedTrait.name} ~> M) {
                   def apply[A](fa: ${sealedTrait.name}[A]): M[A] = fa match {
                     case ..${absValsDefsOps.map {
                       case DefDef(_, name, _, paramss, rt, _) =>
